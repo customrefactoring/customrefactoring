@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Refactoring Customizations</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('body').scrollspy({
+				target: '#mainNavBar'
+			})
+		});
+	</script>
+
+</head>
+
+<body>
+
+	<nav id="mainNavBar" class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+					data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span>
+				</button>
+				<!-- <a class="navbar-brand" href="#"></a> conference name -->
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#abstract">Abstract <span class="sr-only">(current)</span></a></li>
+
+					<li><a href="#projectlist">Project List</a></li>
+					<li><a href="#applicability">Applicability</a></li>
+					<li><a href="#downloads">Downloads</a></li>
+
+					<!--<li><a href="#references">References</a></li>-->
+
+				</ul>
+
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+
+
+	<div class="container container-gral">
+
+		<div class="page-title">
+			<h1>
+				The untold story of refactoring customizations in practice<br>
+			</h1>
+		</div>
+		<br>
+		<p class="text-justify">
+			This website contains complementary data to the
+			<!--submitted-->
+			paper.
+		</p>
+
+		<h3 id="abstract" class="page-header">Abstract</h3>
+		<p class="text-justify">Background:
+			Refactoring is a common software maintenance practice. While the literature defines standard code
+			modifications for each popular refactoring type, popular IDEs provide refactoring tools aiming to support
+			these standard modifications. Previous studies indicated that developers either frequently avoid using these
+			tools or end up modifying and even reversing the code automatically refactored by the IDE. This means that
+			developers are forced to manually apply refactorings partially or completely, which is cumbersome and
+			error-prone. All these factors indicate that refactoring support may not be entirely aligned with certain
+			refactoring activity needs. Thus, the improvement of tooling support for refactoring in practice requires
+			the understanding in what ways developers tailor refactoring modifications in their produced code. To
+			address this issue, we conduct an analysis of 1,162 refactorings composed of more than 100k program
+			modifications from 13 software projects. Our results reveal that developers recurrently apply patterns of
+			additional modifications along with the standard ones in their refactorings, from here on called patterns of
+			customized refactorings. For instance, we found customized refactorings in 80.77% of the
+			Move Method instances observed in software projects. We also investigated the features of
+			refactoring tools in popular IDEs and observed that very common customization patterns are not fully
+			supported by them. Additionally, to understand the relevance of these customizations, we conducted a survey
+			with 40 developers about the most frequent customization patterns we found. Developers confirm they
+			commonly apply those patterns in their projects and agree that improvements in IDE's refactoring support is
+			needed. These observations also suggest refactoring guidelines must be updated to reflect typical
+			refactoring customizations. The update of these guidelines can better help IDE builders to improve
+			customized refactoring support. We revealed a range of refactoring customization patterns for four very
+			popular refactoring types, which shed light on the improvement of existing refactoring guidelines and tool
+			support.
+		</p>
+
+
+		<h3 id="projectlist" class="page-header">Project List</h3>
+
+		<p class="text-justify">The list of projects is detailed below. The first column indicates the project name.
+			Then, we indicated the number of commits and the analyzed period. Finally, the last columns indicate the
+			number of refactoring instances. </p>
+		<img src="images/projects.png" alt="" style="margin-top: 18px; margin-bottom: 18px; width: 85%;">
+
+		<h3 id="applicability" class="page-header">Applicability</h3>
+
+		<div class="text-justify">
+			Our study complements previous studies[8][14] and helps the development of refactoring tools well
+			aligned with refactorings in practice. Tool developers can use these catalogs to create flexible tools,
+			allowing developers to apply the patterns as a configuration of the tool or through recommendations.
+			For instance, the following image illustrates an additional configuration for Netbeans.
+			This new configuration should allow developers to handle the client methods that will be
+			affected by the refactoring, especially, to handle the modification *Method Access* that
+			composes the most frequent patterns. In this way, developers should be able to decide how each client method
+			should be affected.
+		</div>
+		<img src="images/config.png" alt="" style="margin-top: 18px; margin-bottom: 18px;">
+
+		<div>For more complex patterns, composed of several modifications,
+			refactoring tools should allow developers to create their own
+			customization in a step-wise way, adding or removing code modifications
+			that compose each refactoring. Finally, these tools could also recommend
+			customized refactorings for each developer.
+		</div>
+
+
+
+		<h3 id="downloads" class="page-header">Downloads</h3>
+		<div>Attention-1: Some browsers may automatically convert the .csv files to .xls when downloading the data. You
+			should convert back to correctly work.</div>
+		<div>Attention-2: Some modifications may have a different name in the data. Such as: Function -> Method,
+			Creation -> Declaration</div>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Artifact</th>
+					<th>Description</th>
+				</tr>
+
+				<!-- Instancias -->
+				<tr>
+					<th scope="row">1</th>
+					<td><a href="download/EM-instances.csv" target="_blank">EM instances.csv</a></td>
+					<td>This file contains the instances of Extract Method.
+				</tr>
+				<tr>
+					<th scope="row">2</th>
+					<td><a href="download/IM-instances.csv" target="_blank">IM instances.csv</a></td>
+					<td>This file contains the instances of Inline Method.
+				</tr>
+				<tr>
+					<th scope="row">3</th>
+					<td><a href="download/MM-instances.csv" target="_blank">MM instances.csv</a></td>
+					<td>This file contains the instances of Move Method.
+				</tr>
+				<tr>
+					<th scope="row">4</th>
+					<td><a href="download/PUM-instances.csv" target="_blank">PUM instances.csv</a></td>
+					<td>This file contains the instances of Pull Up Method.
+				</tr>
+
+				<!-- Modifications -->
+
+				<tr>
+					<th scope="row">5</th>
+					<td><a href="download/EM-modifications.rar" target="_blank">EM modifications.rar</a></td>
+					<td>This file contains the code modifications detected during Extract Method Application.
+				</tr>
+				<tr>
+					<th scope="row">6</th>
+					<td><a href="download/IM-modifications.txt" target="_blank">IM modifications.txt</a></td>
+					<td>This file contains the code modifications detected during Inline Method Application.
+				</tr>
+				<tr>
+					<th scope="row">7</th>
+					<td><a href="download/MM-modifications.txt" target="_blank">MM modifications.txt</a></td>
+					<td>This file contains the code modifications detected during Move Method Application.
+				</tr>
+				<tr>
+					<th scope="row">8</th>
+					<td><a href="download/PUM-modifications.txt" target="_blank">PUM modifications.txt</a></td>
+					<td>This file contains the code modifications detected during Pull Up Method Application.
+				</tr>
+
+				<!--Padrões  -->
+
+				<tr>
+					<th scope="row">9</th>
+					<td><a href="download/EM-patterns.csv" type="text/csv" target="_blank">EM patterns.csv</a></td>
+					<td>This file contains the patterns of Extract Method.
+				</tr>
+				<tr>
+					<th scope="row">10</th>
+					<td><a href="download/IM-patterns.csv" target="_blank">IM patterns.csv</a></td>
+					<td>This file contains the patterns of Inline Method.
+				</tr>
+				<tr>
+					<th scope="row">11</th>
+					<td><a href="download/MM-patterns.csv" target="_blank">MM patterns.csv</a></td>
+					<td>This file contains the patterns of Move Method.
+				</tr>
+				<tr>
+					<th scope="row">12</th>
+					<td><a href="download/PUM-patterns.csv" target="_blank">PUM patterns.csv</a></td>
+					<td>This file contains the patterns of Pull Up Method.
+				</tr>
+
+				<tr>
+					<th scope="row">13</th>
+					<td><a href="download/Survey.csv" target="_blank">Survey.csv</a></td>
+					<td>This file contains the survey questions and answers.
+				</tr>
+
+
+			</thead>
+			<tbody>
+
+
+
+			</tbody>
+		</table>
+
+</body>
+
+</html>
