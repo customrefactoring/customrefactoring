@@ -40,6 +40,7 @@
 
 					<li><a href="#projectlist">Project List</a></li>
 					<li><a href="#applicability">Applicability</a></li>
+					<li><a href="#threats">Threats to validity</a></li>
 					<li><a href="#downloads">Downloads</a></li>
 
 					<!--<li><a href="#references">References</a></li>-->
@@ -121,6 +122,86 @@
 			that compose each refactoring. Finally, these tools could also recommend
 			customized refactorings for each developer.
 		</div>
+
+
+		<h3 id="threats" class="page-header">Threats to validity</h3>
+
+		<p class="text-justify">
+
+		<h5 style="margin-bottom: 12px; font-size: 18px;"> Internal Validity</h5>
+
+		a) RMiner may yield false positives and false negatives. It has an effectiveness of 87.2% for recall and 98%
+		for precision, which is the best effectiveness among refactoring detection tools. To alleviate this threat,
+		we manually inspected some instances identified by it during our analysis. Also, the newest versions of RMiner
+		improved mainly the recall value, which would not change the results since the number of false positives
+		(precision) is still similar in both versions.
+		<br>
+		<br>
+		b) Due to the practical need for floss refactoring, custom refactorings cannot be limited only to changes
+		that preserve the behavior. Otherwise, we would disregard common goals for developers such as making the code
+		more robust and fixing bugs that may often require the same additional code changes. Finally, customized
+		refactorings include only recurrent refactoring’s co-occurring changes that satisfy some
+		criteria. These changes should be semantically involved in the refactoring operation
+		and interact with the source or target methods. These criteria ensure a link between the
+		addressed code change and the standard changes of the refactoring. In some instances,
+		these changes were mentioned as critical for developers to achieve their goals.
+
+		<br>
+		<br>
+		<h5 style="margin-bottom: 12px; font-size: 18px;">Construct Validity</h5>
+
+		a) The RMiner detects 15 types of refactorings in version
+		1.0, but we are considering only four types of refactorings. Although these four
+		refactorings may not fully embrace all forms of refactoring customizations, these four refactorings have
+		been frequently applied by developers in practice. Also, these
+		refactorings affect the program structure differently at method-level and class-level. For instance,
+		Extract Method is a method-level refactoring, affecting directly especially one class. Different
+		from Extract Method, Move Methods, and Pull Up Methods affect at least two classes,
+		including changes affecting a class hierarchy. Yet, these refactorings have similarities with other
+		refactoring types, e.g. Move Method moves a method from one class to another, similarly to Push
+		Downs and Pull ups. We chose Pull Up to understand this method movement in the context
+		of a class hierarchy. We avoid textual refactorings such as renames. Given their simpler and
+		lexical nature, they have less room for structural customization. Also, any customization
+		exclusively from interleaved refactorings, such as Move and any other refactoring, would be
+		an addition to the customizations already present in our study and it does not affect our
+		results. Finally, the selected refactorings have (i) often a larger scope and a higher number of
+		customizations, and (ii) a much stronger relation to major design problems.
+		<br>
+		<br>
+
+		b) Although we are currently analyzing refactorings detected only by RMiner, it is possible
+		to observe that RMiner's detection rules include several statements which demonstrated to allow the
+		detection of a variety of refactorings instances, which can include possible customizations.
+
+		<br>
+		<br>
+		c) The collected modification types may not consider all possible modification types. We used Eclipse's JDT
+		library, once this library has a very low level of granularity. In this way, we can detect a large number of
+		modifications. Besides, this library is commonly used to build automated refactoring tools for Eclipse
+		and RMiner.
+
+
+		<br>
+		<br>
+		<h5 style="margin-bottom: 12px; font-size: 18px;">External Validity</h5>
+
+		We performed an in-depth analysis of refactoring instances from 13 Java
+		projects, which satisfy somep predefined criteria. Our results might not
+		necessarily hold to other projects involving other primary programming languages and/or from domains not
+		covered by our dataset. Moreover, we focused our analysis on open-source software projects. The nature of
+		refactoring in closed-source software projects is not necessarily the same as refactoring in open-source
+		software projects. However, popular open-source projects have a major concern with software modularity
+		tending to continuously refactor the source code. Finally, we analyzed projects with differing sizes/domains
+		and all key findings were uniform. The domains are: database management, libraries
+		to streaming systems, and libraries to social media. These projects have a viral
+		growth behavior and an active community, according to Github metrics. All projects are detailed on
+		this website and will be updated as necessary
+
+
+
+
+
+		</p>
 
 
 
