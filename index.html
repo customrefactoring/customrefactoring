@@ -37,8 +37,9 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="#abstract">Abstract <span class="sr-only">(current)</span></a></li>
-
+					<li><a href="#modifications">Refactoring-related modifications</a></li>
 					<li><a href="#projectlist">Project List</a></li>
+					
 					<li><a href="#applicability">Applicability</a></li>
 					<li><a href="#threats">Threats to validity</a></li>
 					<li><a href="#downloads">Downloads</a></li>
@@ -94,12 +95,21 @@
 			support.
 		</p>
 
+		<h3 id="modifications" class="page-header">Refactoring-related modifications</h3>
+
+		A code modification is part of the set of modifications of a refactoring operation identified by a refactoring detection tool. A refactoring operation also may contain additional modifications that interact with the source/target methods (Table 1). 
+		
+		By a manual analysis of the refactoring operations, we make decisions about how to decide if an additional modification is (not) part of a refactoring operation, which we describe as follows. First, we created filters to automatically identify and avoid questionable instances of refactorings. For instance, the filters avoided instances of refactorings where the source/target methods had parameters using diamond operators or the operator "...", once these operators allow the method to have any number of parameters, we are not able to detect the interaction with source/target methods correctly based on the method signature.
+		For modifications occurring within a source/target of an operation, we identified recurring forms of non-refactoring modifications (for each refactoring type), ignoring these modifications. We also double-checked whether any of these modifications was incorrectly classified as a non-refactoring modification. 
+
+		For each external modification interacting with a source/target, we found out two cases of additional refactoring modifications: (1) external modifications that were clearly part of the refactoring operation and had nothing to do with a non-refactoring change, and (2) external modifications that we considered simultaneously pertaining to both the refactoring operation and another non-refactoring change, such as a feature addition. For the cases in (2), those modifications were part of the refactoring operation (even though they were also motivated by a feature change, L.805) as they only existed due to the structural alteration aimed by the refactoring. These modifications in (2) are those that typically determine “the interface” between the refactoring operation and other co-occurring (non-refactoring) changes. In fact, existing IDEs consider these “refactoring interfaces” as part of the refactoring operation as they already provide some preliminary support to customize these “interfaces”.  For instance, existing IDEs support developers in customizing an Extract Method refactoring by enabling them to qualify a method as public, protected or private (which is not a standard modification in the Extract Method definition) to bind the refactoring modifications with the non-refactoring modifications. This binding is made only due to the refactoring operation (and, therefore, is part of it) as a new method creation is an intrinsic goal of the refactoring. Making the method accessible (to external non-refactoring changes) is a compulsory modification to introduce method calls from client methods that compose the most frequent customizations. Finally, there were cases of refactoring customizations that excluded standard modifications from the literature that we either detected by manual analysis or depended on additional information in the software project repository. 
+
 
 		<h3 id="projectlist" class="page-header">Project List</h3>
 
 		<p class="text-justify">The list of projects is detailed below. The first column indicates the project name.
 			Then, we indicated the number of commits and the analyzed period. Finally, the last columns indicate the
-			number of refactoring instances. </p>
+			number of refactoring instances. We collected only commits from the main/master branches, including merge requests for these branches. </p>
 		<img src="images/projects.png" alt="" style="margin-top: 18px; margin-bottom: 18px; width: 85%;">
 
 		<h3 id="applicability" class="page-header">Applicability</h3>
